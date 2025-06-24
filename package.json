@@ -1,6 +1,6 @@
 {
   "name": "angular-fetcher",
-  "version": "17.0.0",
+  "version": "18.0.0",
   "description": "Signal-based state management for remote API data in Angular with support for reactive loading, error tracking, optimistic updates, and auto refetching.",
   "author": "Ali Montazeri <benmontazeri@gmail.com>",
   "license": "MIT",
@@ -28,11 +28,11 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    "@angular/core": "^17.0.0",
+    "@angular/core": "^18.0.0",
     "rxjs": "~7.4.0"
   },
   "devDependencies": {
-    "ng-packagr": "^17.0.0",
-    "typescript": "~5.2.0"
+    "ng-packagr": "^18.0.0",
+    "typescript": "~5.4.0"
   }
 }
