@@ -40,10 +40,10 @@ angular-fetcher makes working with remote APIs in Angular a breeze. By leveragin
 
 | Angular Version | Supported Package Version |
 | --------------- | ------------------------- |
-| Angular `17.x`  | `^17.0.1`                 |
-| Angular `18.x`  | `^18.0.1`                 |
+| Angular `20.x`  | `^20.0.2`                 |
 | Angular `19.x`  | `^19.0.2`                 |
-| Angular `20.x`  | `^20.0.0`                 |
+| Angular `18.x`  | `^18.0.1`                 |
+| Angular `17.x`  | `^17.0.1`                 |
 
 > Please install the latest patch and minor version of each major release to ensure optimal compatibility.
 
