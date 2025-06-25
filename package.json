@@ -1,6 +1,6 @@
 {
   "name": "angular-fetcher",
-  "version": "20.0.1",
+  "version": "20.0.2",
   "description": "Signal-based state management for remote API data in Angular with support for reactive loading, error tracking, optimistic updates, and auto refetching.",
   "author": "Ali Montazeri <benmontazeri@gmail.com>",
   "license": "MIT",
@@ -17,14 +17,19 @@
     "error-handling",
     "fetch-state"
   ],
-  "main": "dist/fesm2022/angular-fetcher.mjs",
-  "module": "dist/fesm2022/angular-fetcher.mjs",
+  "main": "dist/public-api.js",
   "types": "dist/public-api.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/public-api.js",
+      "types": "./dist/public-api.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "ng-packagr -p ng-package.json",
+    "build": "tsc -p tsconfig.json",
     "prepublishOnly": "npm run build"
   },
   "repository": {
@@ -40,7 +45,6 @@
     "rxjs": "^7.4.0"
   },
   "devDependencies": {
-    "ng-packagr": "^20.0.0",
     "typescript": "~5.8.0"
   }
 }
