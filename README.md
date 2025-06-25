@@ -8,12 +8,14 @@ angular-fetcher is a modern, signal-based library for managing remote API data i
 
 - [Why Angular Fetcher?](#why-angular-fetcher)
 - [Features](#features)
+- [Angular Compatibility](#angular-compatibility)
 - [Installation](#installation)
 - [Fetching Data](#fetching-data)
 - [Handling Mutations](#handling-mutations)
 - [Empty Value Option](#empty-value-option)
 - [Invalidate vs. Fetch](#invalidate-vs-fetch)
 - [Abort Requests](#abort-requests)
+- [Http Interceptor](#http-interceptor)
 - [License](#license)
 
 <br />
@@ -31,6 +33,19 @@ angular-fetcher makes working with remote APIs in Angular a breeze. By leveragin
 - ✅ **Mutations**: Perform updates with optimistic changes and track specific mutation states using mutationLoadingKey.
 - ✅ **Type Safety**: Enjoy TypeScript support for better code reliability and IDE assistance.
 - ✅ **Angular Integration**: Works smoothly with Angular's dependency injection and RxJS.
+
+<br />
+
+## Angular Compatibility
+
+| Angular Version | Supported Package Version |
+| --------------- | ------------------------- |
+| Angular `17.x`  | `^17.0.1`                 |
+| Angular `18.x`  | `^18.0.1`                 |
+| Angular `19.x`  | `^19.0.2`                 |
+| Angular `20.x`  | `^20.0.0`                 |
+
+> Please install the latest patch and minor version of each major release to ensure optimal compatibility.
 
 <br />
 
@@ -203,6 +218,10 @@ export class AddUserComponent {
 }
 ```
 
+> Optimistic Update Explanation: Optimistic update is a technique where changes are applied immediately in the UI before receiving confirmation from the server. This improves perceived responsiveness by instantly reflecting user actions. If the server confirms the change, the update remains; if the request fails, the UI reverts to the previous state to maintain consistency.
+
+<br/>
+
 The `mutationLoadingKey()['add-user']` tracks the mutation's loading state, and `optimisticUpdate` instantly updates the UI while `invalidate: true` ensures the data syncs with the server.
 
 <br />
@@ -241,6 +260,12 @@ this.usersResource.abort();
 This is useful for cancelling background requests when navigating away from a view, or to reset state deliberately.
 
 <br />
+
+## Http Interceptor
+
+Because angular-fetcher uses Angular’s HttpClient internally, it fully supports all features of Angular’s HTTP client, including interceptors. This means you can take advantage of authentication tokens, logging, error handling, and any custom request modifications seamlessly within angular-fetcher without additional setup.
+
+<br/>
 
 ## License
 
