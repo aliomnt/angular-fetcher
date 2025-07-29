@@ -50,9 +50,9 @@ interface ExtendedWithResourceOptions<T> extends WithResourceOptions {
  * });
  * ```
  */
-export function withResource<T extends Record<string, any>, E = unknown>(
+export function withResource<T, E = unknown>(
   loader: () => Observable<T>,
-  options: ExtendedWithResourceOptions<T> = { emptyValue: {} as T }
+  options: ExtendedWithResourceOptions<T> = { emptyValue: null as T }
 ) {
   const _data = signal<T>(options.emptyValue);
   const _fetchLoading = signal(false);
@@ -60,7 +60,22 @@ export function withResource<T extends Record<string, any>, E = unknown>(
   const _mutationLoadingKey = signal<{ [key: string]: boolean }>({});
   const _error = signal<E | null>(null);
   const abort$ = new Subject<void>();
-  const _isEmpty = computed(() => Object.keys(_data()).length === 0);
+  const _isEmpty = computed(() => {
+    const data = _data();
+    if (data === null || data === undefined) {
+      return true;
+    }
+    if (typeof data === "string") {
+      return data.length === 0;
+    }
+    if (Array.isArray(data)) {
+      return data.length === 0;
+    }
+    if (typeof data === "object" && data !== null) {
+      return Object.keys(data).length === 0;
+    }
+    return false;
+  });
 
   const destroyRef = inject(DestroyRef, { optional: true });
   const fallbackDestroy$ = destroyRef
