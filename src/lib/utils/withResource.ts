@@ -12,7 +12,7 @@ interface ExtendedWithResourceOptions<T> extends WithResourceOptions {
   /**
    * Initial value used when no resource has been loaded or after invalidation.
    */
-  emptyValue: T;
+  emptyValue?: T;
 }
 
 /**
@@ -52,9 +52,10 @@ interface ExtendedWithResourceOptions<T> extends WithResourceOptions {
  */
 export function withResource<T, E = unknown>(
   loader: () => Observable<T>,
-  options: ExtendedWithResourceOptions<T> = { emptyValue: null as T }
+  options: ExtendedWithResourceOptions<T> = {}
 ) {
-  const _data = signal<T>(options.emptyValue);
+  const emptyValue: T = options.emptyValue ?? ({} as T);
+  const _data = signal<T>(emptyValue);
   const _fetchLoading = signal(false);
   const _mutationLoading = signal(false);
   const _mutationLoadingKey = signal<{ [key: string]: boolean }>({});
@@ -217,7 +218,7 @@ export function withResource<T, E = unknown>(
    * @public
    */
   const invalidate = () => {
-    _data.set(options.emptyValue);
+    _data.set(emptyValue);
     fetch();
   };
 
