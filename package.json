@@ -1,6 +1,6 @@
 {
   "name": "angular-fetcher",
-  "version": "20.1.1",
+  "version": "21.0.0",
   "description": "Signal-based state management for remote API data in Angular with support for reactive loading, error tracking, optimistic updates, and auto refetching.",
   "author": "Ali Montazeri <benmontazeri@gmail.com>",
   "license": "MIT",
@@ -41,10 +41,10 @@
   },
   "homepage": "https://github.com/aliomnt/angular-fetcher#readme",
   "peerDependencies": {
-    "@angular/core": "^20.0.0",
-    "rxjs": "^7.4.0"
+    "@angular/core": ">=21.0.0 <22.0.0",
+    "rxjs": "^6.5.3 || ^7.4.0"
   },
   "devDependencies": {
-    "typescript": "~5.8.0"
+    "typescript": ">=5.9.0 <6.0.0"
   }
 }
