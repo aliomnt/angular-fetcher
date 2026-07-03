@@ -40,6 +40,7 @@ angular-fetcher makes working with remote APIs in Angular a breeze. By leveragin
 
 | Angular Version | Supported Package Version |
 | --------------- | ------------------------- |
+| Angular `22.x`  | `^22.0.0`                 |
 | Angular `21.x`  | `^21.0.0`                 |
 | Angular `20.x`  | `^20.1.1`                 |
 | Angular `19.x`  | `^19.0.2`                 |
@@ -99,15 +100,15 @@ import { UserService } from "./user.service";
     <button (click)="reload()">Reload Users</button>
 
     @if (users.state.fetchLoading()) {
-    <div>Loading users...</div>
+      <div>Loading users...</div>
     } @else if (users.state.error()) {
-    <div class="error">{{ users.state.error()?.message }}</div>
+      <div class="error">{{ users.state.error()?.message }}</div>
     } @else {
-    <div class="user-list">
-      @for (user of users.state.data(); track user.id) {
-      <div>{{ user.name }}</div>
-      }
-    </div>
+      <div class="user-list">
+        @for (user of users.state.data(); track user.id) {
+          <div>{{ user.name }}</div>
+        }
+      </div>
     }
   `,
   styles: [
